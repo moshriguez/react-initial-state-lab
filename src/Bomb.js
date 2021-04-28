@@ -8,6 +8,13 @@ class Bomb extends React.Component {
         }
     }
 
+    countDown = () => {
+        const newCount = this.state.secondsLeft - 1
+        this.setState({secondsLeft: newCount})
+    }
+
+
+
     boom = () => {
         if (this.state.secondsLeft === 0) {
             return 'Boom!'
@@ -17,7 +24,7 @@ class Bomb extends React.Component {
     }
 
     render() {
-        return (<div>
+        return (<div onLoad={setTimeout(this.countDown, 1000)}>
             {this.boom()}
         </div>)
     }
